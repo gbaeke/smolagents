@@ -17,6 +17,8 @@ A Python-based AI assistant that combines web search, browser automation, and we
    - OPENAI_API_KEY=your_openai_key
    - BING_SUBSCRIPTION_KEY=your_bing_key
 
+Note: PDF generation requires WeasyPrint system dependencies. Check https://doc.courtbouillon.org/weasyprint/stable/index.html for more information.
+
 ## Usage
 
 Run the assistant by providing your question as a command-line argument:
@@ -45,4 +47,7 @@ The assistant uses three main components:
 
 - Python 3.8+
 - OpenAI API key
-- Bing API key 
+- Bing API key
+
+
+
