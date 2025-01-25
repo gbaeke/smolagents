@@ -2,6 +2,10 @@
 .env
 .env.*
 
+# Files
+*.pdf
+images/
+
 # Python
 __pycache__/
 *.py[cod]

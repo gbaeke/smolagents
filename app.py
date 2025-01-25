@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from bing_search import BingSearchTool
 from scrape_tool import ScrapeTool
 from browser_tool import BrowserTool
+from pdf_tool import PDFTool
 from langchain_openai import ChatOpenAI
 
 def print_usage():
@@ -45,10 +46,11 @@ def main():
     bing_search_tool = BingSearchTool(api_key=bing_subscription_key)
     scrape_tool = ScrapeTool()
     browser_tool = BrowserTool(llm=browser_llm)
+    pdf_tool = PDFTool()
 
     model = LiteLLMModel(model_id="openai/gpt-4o-mini", api_key=openai_api_key)
 
-    agent = CodeAgent(model=model, tools=[bing_search_tool, scrape_tool, browser_tool])
+    agent = CodeAgent(model=model, tools=[bing_search_tool, scrape_tool, browser_tool, pdf_tool])
 
     result = agent.run(question)
     print(result)

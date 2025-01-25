@@ -5,9 +5,11 @@ from typing import Optional
 class BrowserTool(Tool):
     name = "browser_automation"
     description = """
-    This tool automates browser actions using natural language commands.
+    This tool uses a browser to get information from a website.
     It can navigate websites, fill forms, click buttons, and extract information.
     Perfect for web automation tasks and data extraction from dynamic websites.
+    Use it when users want to get information directly from a website and interaction
+    with the website is required. If no interaction is required, use the search and scrape tool.
     """
     
     inputs = {

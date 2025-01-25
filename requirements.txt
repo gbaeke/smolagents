@@ -3,4 +3,8 @@ litellm
 python-dotenv
 requests
 browser-use
-langchain-openai 
+langchain-openai
+reportlab
+markdown2
+beautifulsoup4
+weasyprint>=60.1 
