@@ -1,0 +1,6 @@
+smolagents
+litellm
+python-dotenv
+requests
+browser-use
+langchain-openai 
