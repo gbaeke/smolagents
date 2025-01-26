@@ -16,6 +16,9 @@ A Python-based AI assistant that combines web search, browser automation, and we
 3. Create a `.env` file with your API keys:
    - OPENAI_API_KEY=your_openai_key
    - BING_SUBSCRIPTION_KEY=your_bing_key
+4. For telemetry, run `python -m phoenix.server.main serve` before running the agent
+   - See https://huggingface.co/docs/smolagents/tutorials/inspect_runs for more information
+
 
 Note: PDF generation requires WeasyPrint system dependencies. Check https://doc.courtbouillon.org/weasyprint/stable/index.html for more information.
 

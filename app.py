@@ -8,6 +8,22 @@ from tools.browser_tool import BrowserTool
 from tools.pdf_tool import PDFTool
 from langchain_openai import ChatOpenAI
 
+# instrumentation
+from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+from openinference.instrumentation.smolagents import SmolagentsInstrumentor
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.trace.export import ConsoleSpanExporter, SimpleSpanProcessor
+
+endpoint = "http://0.0.0.0:6006/v1/traces"
+trace_provider = TracerProvider()
+trace_provider.add_span_processor(SimpleSpanProcessor(OTLPSpanExporter(endpoint)))
+
+SmolagentsInstrumentor().instrument(tracer_provider=trace_provider)
+
+
 def print_usage():
     print("\nUsage: python app.py \"your question in quotes\"")
     print("\nExample:")
@@ -49,8 +65,13 @@ def main():
     pdf_tool = PDFTool()
 
     model = LiteLLMModel(model_id="openai/gpt-4o-mini", api_key=openai_api_key, max_tokens=4096)
-
-    agent = CodeAgent(model=model, tools=[bing_search_tool, scrape_tool, browser_tool, pdf_tool])
+    
+    agent = CodeAgent(
+        model=model,
+        tools=[bing_search_tool, scrape_tool, browser_tool, pdf_tool],
+        max_steps=10,
+        verbosity_level=2
+    )
 
     result = agent.run(question)
     print(result)
