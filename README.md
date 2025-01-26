@@ -52,5 +52,10 @@ The assistant uses three main components:
 - OpenAI API key
 - Bing API key
 
+## Notes
 
+Token consumption can be high. For example, the query `Research the DeepSeek R1 LLM. Use at least 5 different sources and summarize what you learn. In addtion, find images that are related and list them as well in your answer. Create a PDF from the info you gathered` consumed a total of close to 50k tokens. This simply depends on the query and how the agent decides what tools to use.
 
+If you use Phoenix Arize, you can see the traces in the UI:
+
+![alt text](image.png)
