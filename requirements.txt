@@ -8,3 +8,7 @@ reportlab
 markdown2
 beautifulsoup4
 weasyprint>=60.1 
+arize-phoenix
+opentelemetry-sdk
+opentelemetry-exporter-otlp
+openinference-instrumentation-smolagents
