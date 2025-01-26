@@ -15,12 +15,13 @@ class PDFTool(Tool):
     The input text can be in markdown format.
     Perfect for creating reports, saving search results, or documenting information.
     The PDF will be saved in the current directory with a timestamp.
+    Text needs to be in markdown format.
     """
     
     inputs = {
         "content": {
             "type": "string",
-            "description": "The content to include in the PDF. Can contain text and image URLs.",
+            "description": "The content to include in the PDF. Can contain text and image URLs. Text needs to be in markdown format.",
         },
         "title": {
             "type": "string",
@@ -61,7 +62,9 @@ class PDFTool(Tool):
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             filename = f"{title.lower().replace(' ', '_')}_{timestamp}"
         
-        pdf_path = f"{filename}.pdf"
+        # Create pdfs directory if it doesn't exist
+        os.makedirs("pdfs", exist_ok=True)
+        pdf_path = os.path.join("pdfs", f"{filename}.pdf")
 
         # Convert markdown to HTML
         markdowner = Markdown(extras=['fenced-code-blocks', 'tables', 'code-friendly'])

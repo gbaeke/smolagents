@@ -2,10 +2,10 @@ from smolagents import CodeAgent, LiteLLMModel, ToolCallingAgent
 import os
 import sys
 from dotenv import load_dotenv
-from bing_search import BingSearchTool
-from scrape_tool import ScrapeTool
-from browser_tool import BrowserTool
-from pdf_tool import PDFTool
+from tools.bing_search import BingSearchTool
+from tools.scrape_tool import ScrapeTool
+from tools.browser_tool import BrowserTool
+from tools.pdf_tool import PDFTool
 from langchain_openai import ChatOpenAI
 
 def print_usage():
@@ -48,7 +48,7 @@ def main():
     browser_tool = BrowserTool(llm=browser_llm)
     pdf_tool = PDFTool()
 
-    model = LiteLLMModel(model_id="openai/gpt-4o-mini", api_key=openai_api_key)
+    model = LiteLLMModel(model_id="openai/gpt-4o-mini", api_key=openai_api_key, max_tokens=4096)
 
     agent = CodeAgent(model=model, tools=[bing_search_tool, scrape_tool, browser_tool, pdf_tool])
 

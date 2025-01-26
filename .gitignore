@@ -4,6 +4,7 @@
 
 # Files
 *.pdf
+pdfs/
 images/
 
 # Python

@@ -22,8 +22,8 @@ class BingSearchTool(Tool):
         },
         "include_images": {
             "type": "boolean",
-            "description": "Whether to include image results (default: True)",
-            "default": True,
+            "description": "Whether to include image results (default: False)",
+            "default": False,
             "nullable": True
         }
     }
